@@ -1,0 +1,78 @@
+html, body {
+  background: #000000;
+}
+.matrix {
+  position: absolute;
+   background: #111111;
+  width: 1040px;
+  height: 298px;
+  left: 0;
+  right: 0;
+  top: 50%;
+  padding: 0;
+  margin: -149px auto;
+}
+.fld {
+  border: 0px solid black;
+  letter-spacing: 7px;
+  line-height: 12px;
+  color: transparent;
+  font-size: 12px;
+  margin: 0;
+  float: left;
+  font-weight: 600;
+  background: #003466;
+  cursor: pointer;
+}
+.palit {
+  color: #ffffff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -100px;
+  text-align: center;
+}
+.palit li {
+  float: left;
+  list-style-type: none;
+  list-style-position: inside;
+}
+.palit button {
+  background: transpatent;
+  border: none;
+  color: #ffffff;
+  height: 42px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+.curcol {
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  float: right;
+  right: 50px;
+  bottom: -100px;
+  cursor: pointer;
+}
+.clear {
+  color: #909090!important;
+  background: #505050;
+  margin-left: 10px;
+}
+/*span:nth-child(80) {
+  background: white;
+}*/
+.white {background: #ffffff;}
+.red {background: #fe0000;}
+.orange {background: #fe9901;}
+.green {background: #00ff01;}
+.blue {background: #0080ff;}
+.purple {background: #6835ff;}
+.cookie {background: #ffcb99;}
+.gray {background: #999999;}
+.black {background: #000000;}
+.pinka {background: #ff99ff;}
+.pinkb {background: #ee3696;}
+.pinkc {background: #ff999a;}
