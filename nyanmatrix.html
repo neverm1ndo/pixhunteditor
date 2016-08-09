@@ -12,6 +12,9 @@
     <title>nyanmatrix</title>
   </head>
   <body ng-app="nyanmatrix">
+    <p class="apptitle">
+      8bitnyan by Mironov MIkhail
+    </p>
     <div class="matrix" ng-controller="matrixcontrol">
       <span ng-click="fill()" class="fld" ng-repeat="(sym, col) in line track by $index">
         <div ng-controller="pix" ng-click="fill()" class="{{line[$index]['col']}}"></div>
@@ -64,11 +67,25 @@
             <button ng-click="save()" class="clear">Save</button>
           </li>
           <li>
-            <button ng-click="load()" class="clear">Load</button>
+            <button ng-click="loading = false" class="clear">Load</button>
           </li>
         </ul>
       </div>
       <div class="curcol {{curcol}}">
+      </div>
+      <div class="saveling" ng-hide="saveling">
+        <p>
+          Copy, and save this to .txd
+        </p>
+        <textarea placeholder="Whoops...">{{savearr}}</textarea>
+        <button ng-click="saveling = true">I saved this</button>
+      </div>
+      <div class="saveling" ng-hide="loading">
+        <p>
+          If you were saved our save array, you can past this here to continue or just load it
+        </p>
+        <textarea ng-model="loader" placeholder="Paste here your save file..."></textarea>
+        <button ng-click="load()">I want to load this</button>
       </div>
     </div>
     <script>
@@ -82,6 +99,8 @@
         console.log('NYAN NYAN!');
         console.log('OK, NYAN, DO AN ARRAY!');
         $scope.line = [];
+        $scope.saveling = true;
+        $scope.loading = true;
         for (var i = 0; i < 1920 ; i++) {
           $scope.line.push({sym: '0', col: "none"});
         }
@@ -152,11 +171,14 @@
                 };
             };
             $scope.save = function() {
+              $scope.saveling = false;
               save = JSON.stringify($scope.line);
-              console.log(save);
+              $scope.savearr = save;
             };
             $scope.load = function() {
-              //load from JSON
+              save = JSON.parse($scope.loader);
+              $scope.line = save;
+              $scope.loading = true;
             };
       };
     </script>
