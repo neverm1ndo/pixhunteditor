@@ -22,7 +22,15 @@ html, body {
   float: left;
   font-weight: 600;
   background: #003466;
-  cursor: pointer;
+  cursor: default;
+  transition: 0.08s linear;
+}
+.fld:hover {opacity: 0.5;}
+.fld div {
+  width: 13px;
+  height: 13px;
+  transition: 0.08s linear;
+  opacity: 1;
 }
 .palit {
   color: #ffffff;
@@ -76,3 +84,4 @@ html, body {
 .pinka {background: #ff99ff;}
 .pinkb {background: #ee3696;}
 .pinkc {background: #ff999a;}
+.yellow {background: #fffd3a;}
