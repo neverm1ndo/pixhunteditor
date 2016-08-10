@@ -61,6 +61,12 @@
             <button ng-click="brushgray()" id="gray" class="gray"></button>
           </li>
           <li>
+            <button ng-click="brushpepe()" id="pepe" class="pepe"></button>
+          </li>
+          <li>
+            <button ng-click="brushbrown()" id="brown" class="brown"></button>
+          </li>
+          <li>
             <button ng-click="cleaner()" class="clear">Eraser</button>
           </li>
           <li>
@@ -88,7 +94,7 @@
           If you were saved our save array, you can past this here to continue or just load it
         </p>
         <textarea ng-model="loader" placeholder="Paste here your save file..."></textarea>
-        <button ng-click="load()">I want to load this</button>
+        <button ng-keydown ng-click="load()">I want to load this</button>
       </div>
     </div>
     <script>
@@ -163,6 +169,14 @@
                                 $scope.curcol = "yellow";
                             //    console.log('Nyanbrush is ' + $scope.curcol);
                                 };
+                                $scope.brushpepe = function() {
+                                  $scope.curcol = "pepe";
+                              //    console.log('Nyanbrush is ' + $scope.curcol);
+                                  };
+                                  $scope.brushbrown = function() {
+                                    $scope.curcol = "brown";
+                                //    console.log('Nyanbrush is ' + $scope.curcol);
+                                    };
                                 $scope.cleaner = function() {
                                   $scope.curcol = "cleaner";
                               //    console.log('Nyanbrush is ' + $scope.curcol);
@@ -183,9 +197,14 @@
               $scope.savearr = save;
             };
             $scope.load = function() {
+              if ($scope.loader != NaN) {
               save = JSON.parse($scope.loader);
               $scope.line = save;
               $scope.loading = true;
+            }
+            else {
+              $scope.loading = false;
+            };
             };
       };
     </script>
