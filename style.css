@@ -1,10 +1,11 @@
 html, body {
   background: #000000;
+  font-family: 'Arial', sans-serif;
 }
 .apptitle {
   position: absolute;
   top: 30px;
-  left: 30px;
+  left: 150px;
   color: #202020;
   font-family: 'Arial', sans-serif;
   font-size: 10px;
@@ -34,7 +35,7 @@ html, body {
   color: #999999;
   border-radius: 5px;
 }
-.saveling button {
+.saveling button, .settings button {
   padding: 10px;
   background: #131313;
   border: 2px solid #202020;
@@ -49,16 +50,52 @@ background: #151515;
 .saveling p {
   font-weight: 500px;
 }
-.matrix {
-  position: absolute;
-   background: #111111;
-  width: 1040px;
-  height: 298px;
+.settings{
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  position: fixed;
+  height: 500px;
+  width: 380px;
   left: 0;
   right: 0;
   top: 50%;
+  margin: -300px auto;
+  background: #101010;
+  border: 2px solid #202020;
+  z-index: 100;
+  text-align: center;
+  padding: 20px;
+}
+.settings p {
+  color: #909090;
+  width: 100%;
+  text-align: left;
+}
+.settings input{
+  background: #101010;
+  border: 2px solid #151515;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 50px;
+  color: #909090;
+  text-align: center;
+}
+.setname {
+width: 100px;
+margin-right: 50px;
+}
+.matrix {
+  position: absolute;
+  background: transparent;
+  width: 1040px;
+  max-height: 500px;
+  min-height: 298px;
+  left: 130px;
+  right: 30px;
+  top: 30px;
+  bottom: 30px;
+  margin: auto;
   padding: 0;
-  margin: -149px auto;
 }
 .fld {
   border: 0px solid black;
@@ -81,41 +118,63 @@ background: #151515;
   opacity: 1;
 }
 .palit {
+  background: #090909;
   color: #ffffff;
-  position: absolute;
+  position: fixed;
   left: 0;
-  right: 0;
-  margin: 0 auto;
-  bottom: -100px;
-  text-align: center;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  text-align: left;
+  border-right: 2px solid #151515;
+}
+.palit ul {
+  width: 84px;
 }
 .palit li {
+  margin-left: -20px;
+  margin-right: 20px;
   float: left;
   list-style-type: none;
-  list-style-position: inside;
+  list-style-position: outside;
 }
 .palit button {
-  background: transpatent;
   border: none;
   color: #ffffff;
-  height: 42px;
-  padding-left: 10px;
-  padding-right: 10px;
+  margin-right: 4px;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
 }
 .curcol {
   width: 42px;
   height: 42px;
-  position: absolute;
   float: right;
-  right: 50px;
+  margin-right: 26px;
+  margin-top: 20px;
   bottom: -100px;
   cursor: pointer;
+  transition: 0.08s linear;
+  border: 2px solid #191919;
+  z-index: 110;
 }
 .clear {
+  width: 64px!important;
+  margin-bottom: 1px;
   color: #909090!important;
-  background: #505050;
-  margin-left: 10px;
+  background: #202020;
+  transition: 0.08s linear;
+}
+.clear:hover {
+  background: #303030;
+}
+.emodwarn {
+  position: absolute;
+  margin-top: 60px;
+  font-size: 10px;
+  color: #ffffff;
+  margin-left: -10px;
 }
 /*span:nth-child(80) {
   background: white;
