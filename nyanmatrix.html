@@ -61,6 +61,9 @@
             <button ng-click="brushgray()" id="gray" class="gray"></button>
           </li>
           <li>
+            <button ng-click="cleaner()" class="clear">Eraser</button>
+          </li>
+          <li>
             <button ng-click="clear()" class="clear">Clear all</button>
           </li>
           <li>
@@ -105,61 +108,65 @@
           $scope.line.push({col: "none"});
         }
         clear = $scope.line;
-        console.log('*nyan!*');
+    //    console.log('*nyan!*');
         $scope.curcol = curcol;
       $scope.brushred = function() {
         $scope.curcol = "red";
         curcol = $scope.curcol;
-        console.log('Nyanbrush is ' + curcol);
+      //  console.log('Nyanbrush is ' + curcol);
         };
         $scope.brushblue = function() {
           $scope.curcol = "blue";
-          console.log('Nyanbrush is ' + $scope.curcol);
+      //    console.log('Nyanbrush is ' + $scope.curcol);
           };
           $scope.brushblack = function() {
             $scope.curcol = "black";
-            console.log('Nyanbrush is ' + $scope.curcol);
+          //  console.log('Nyanbrush is ' + $scope.curcol);
             };
             $scope.brushpinka = function() {
               $scope.curcol = "pinka";
-              console.log('Nyanbrush is ' + $scope.curcol);
+          //    console.log('Nyanbrush is ' + $scope.curcol);
               };
               $scope.brushpinkb = function() {
                 $scope.curcol = "pinkb";
-                console.log('Nyanbrush is ' + $scope.curcol);
+              //  console.log('Nyanbrush is ' + $scope.curcol);
                 };
                 $scope.brushgreen = function() {
                   $scope.curcol = "green";
-                  console.log('Nyanbrush is ' + $scope.curcol);
+                //  console.log('Nyanbrush is ' + $scope.curcol);
                   };
                   $scope.brushorange = function() {
                     $scope.curcol = "orange";
-                    console.log('Nyanbrush is ' + $scope.curcol);
+                //    console.log('Nyanbrush is ' + $scope.curcol);
                     };
                     $scope.brushwhite = function() {
                       $scope.curcol = "white";
-                      console.log('Nyanbrush is ' + $scope.curcol);
+                  //    console.log('Nyanbrush is ' + $scope.curcol);
                       };
                       $scope.brushcookie = function() {
                         $scope.curcol = "cookie";
-                        console.log('Nyanbrush is ' + $scope.curcol);
+                  //      console.log('Nyanbrush is ' + $scope.curcol);
                         };
                         $scope.brushgray = function() {
                           $scope.curcol = "gray";
-                          console.log('Nyanbrush is ' + $scope.curcol);
+                        //  console.log('Nyanbrush is ' + $scope.curcol);
                           };
                           $scope.brushpinkc = function() {
                             $scope.curcol = "pinkc";
-                            console.log('Nyanbrush is ' + $scope.curcol);
+                        //    console.log('Nyanbrush is ' + $scope.curcol);
                             };
                             $scope.brushpurple = function() {
                               $scope.curcol = "purple";
-                              console.log('Nyanbrush is ' + $scope.curcol);
+                          //    console.log('Nyanbrush is ' + $scope.curcol);
                               };
                               $scope.brushyellow = function() {
                                 $scope.curcol = "yellow";
-                                console.log('Nyanbrush is ' + $scope.curcol);
+                            //    console.log('Nyanbrush is ' + $scope.curcol);
                                 };
+                                $scope.cleaner = function() {
+                                  $scope.curcol = "cleaner";
+                              //    console.log('Nyanbrush is ' + $scope.curcol);
+                                  };
             $scope.fill = function() {
               $scope.line[index]['col'] = $scope.curcol;
             //  console.log('pix#' + index + ' filled by ' + $scope.curcol);
