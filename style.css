@@ -4,11 +4,14 @@ html, body {
 }
 .apptitle {
   position: absolute;
-  top: 30px;
-  left: 150px;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   color: #202020;
   font-family: 'Arial', sans-serif;
   font-size: 10px;
+  text-align: center;
 }
 .saveling {
   font-family: 'Arial', sans-serif;
@@ -143,6 +146,7 @@ margin-right: 50px;
   border: none;
   color: #ffffff;
   margin-right: 4px;
+  margin-bottom: 4px;
   height: 30px;
   width: 30px;
   cursor: pointer;
@@ -160,6 +164,7 @@ margin-right: 50px;
   z-index: 110;
 }
 .clear {
+  font-size: 12px;
   width: 64px!important;
   margin-bottom: 1px;
   color: #909090!important;
