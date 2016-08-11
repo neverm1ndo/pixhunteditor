@@ -1,5 +1,5 @@
 html, body {
-  background: #000000;
+  background-color: #070707;
   font-family: 'Arial', sans-serif;
 }
 .apptitle {
@@ -74,7 +74,7 @@ background: #151515;
   width: 100%;
   text-align: left;
 }
-.settings input{
+.settings input[type="text"]{
   background: #101010;
   border: 2px solid #151515;
   padding: 10px;
@@ -82,6 +82,27 @@ background: #151515;
   width: 50px;
   color: #909090;
   text-align: center;
+}
+.settings input[type="checkbox"]{
+  position: relative;
+  background: #101010;
+  border: 2px solid #151515;
+  padding: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  color: #909090;
+  top: 2px;
+  text-align: center;
+}
+.settings select {
+  width: 110px;
+  text-align: center;
+  background: #101010;
+  border: 2px solid #151515;
+  padding: 10px;
+  margin-left: 0px;
+  box-sizing: border-box;
+  color: #909090;
 }
 .setname {
 width: 100px;
@@ -91,8 +112,6 @@ margin-right: 50px;
   position: absolute;
   background: transparent;
   width: 1040px;
-  max-height: 500px;
-  min-height: 298px;
   left: 130px;
   right: 30px;
   top: 30px;
@@ -110,18 +129,19 @@ margin-right: 50px;
   float: left;
   font-weight: 600;
   background: #003466;
-  cursor: default;
-  transition: 0.08s linear;
+  cursor: none;
 }
 .fld:hover {opacity: 0.5;}
 .fld div {
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
   transition: 0.08s linear;
   opacity: 1;
+  border-top: 1px dotted transparent;
+  border-right: 1px dotted transparent;
 }
 .palit {
-  background: #090909;
+  background: #131313;
   color: #ffffff;
   position: fixed;
   left: 0;
@@ -199,4 +219,6 @@ margin-right: 50px;
 .yellow {background: #fffd3a;}
 .pepe {background: #5a8d3e;}
 .brown {background: #a7593a;}
+.yo {background: #ecd349;}
 .cleaner {background: transparent;}
+.grid {border-top: 1px dotted #555555!important; border-right: 1px dotted #555555!important;}

@@ -9,7 +9,7 @@
     <script src="pixcontdirve.js"></script>
     <script src="pix.js"></script>
     <link href="style.css" rel="stylesheet"/>
-    <title>nyanmatrix</title>
+    <title>NYAN</title>
   </head>
   <body ng-app="nyanmatrix">
     <p class="apptitle">
@@ -17,7 +17,7 @@
     </p>
     <div class="matrix" ng-controller="matrixcontrol">
       <span ng-click="fill()" class="fld" ng-repeat="(sym, col) in line track by $index">
-        <div ng-controller="pix" ng-click="fill()" class="{{line[$index]['col']}}"></div>
+          <div ng-controller="pix" ng-click="fill()" class="{{line[$index]['col']}} {{grid}}"></div>
       </span>
       <div class="palit">
         <ul>
@@ -67,6 +67,9 @@
             <button ng-click="brush($event)" id="brown" class="brown"></button>
           </li>
           <li>
+            <button ng-click="brush($event)" id="yo" class="yo"></button>
+          </li>
+          <li>
             <button ng-click="cleaner()" class="clear">Eraser</button>
           </li>
           <li>
@@ -79,7 +82,7 @@
             <button ng-click="loading = false" class="clear">Load</button>
           </li>
           <li>
-            <button ng-click="settings = false" class="clear">Settings</button>
+            <button ng-click="sethide = false" class="clear">Settings</button>
           </li>
         </ul>
         <div class="curcol {{generalClass}}">
@@ -91,7 +94,8 @@
           Copy, and save this to .txd
         </p>
         <textarea placeholder="Whoops...">{{savearr}}</textarea>
-        <button ng-click="saveling = true">I saved this</button>
+        <button ng-click="saveling = true">I saved this as TXT</button>
+        <button ng-click="saveling = true">I want to save this as PNG</button>
       </div>
       <div class="saveling" ng-hide="loading">
         <p>
@@ -100,16 +104,28 @@
         <textarea ng-model="loader" placeholder="Paste here your save file..."></textarea>
         <button ng-click="load()">I want to load this</button>
       </div>
-      <div ng-click="serttings = false" class="settings" ng-hide="settings">
+      <div class="settings" ng-hide="sethide">
         <h2>
           Settings
         </h2>
         <hr/>
         <p class="cansize">
-          <span class="setname">Canvas Size : </span><input ng-model="xSize" placeholder="80"/> x <input ng-model="ySize" placeholder="24"/>
+          <span class="setname">Canvas Size : </span><input ng-model="xSize" placeholder="80" type="text"/> x <input ng-model="ySize" placeholder="24" type="text"/>
+        </p>
+        <p class="cansize">
+          <span class="setname">Canvas color : </span>
+            <select ng-options="canfill as canfill.col for canfill in calfills track by canfill.id" ng-model="cancol">
+              <option value="">
+                nyanspace
+              </option>
+            </select>
+        </p>
+        <p class="cansize">
+          <span class="setname">Show grid : </span><input type="checkbox" ng-model="gridShow"/>
         </p>
         <hr />
-        <button ng-click="setconfrim()">Confrim</button>
+        <button ng-click="setconfirm()">Confirm</button>
+        <button ng-click="sethide = true">Close</button>
       </div>
     </div>
     <script>
@@ -120,12 +136,15 @@
       var clear;
       var save;
       var cansize;
+      var cancol;
       function matrixcontrol($scope) {
         $scope.line = [];
         $scope.saveling = true;
         $scope.loading = true;
-        $scope.settings = true;
-        for (var i = 0; i < 1920 ; i++) {
+        $scope.sethide = true;
+        $scope.ySize = 35;
+        $scope.canfills = [{col: "white"}, {col: "pepe"}];
+        for (var i = 0; i < cansize ; i++) {
           $scope.line.push({col: "none"});
         }
         clear = $scope.line;
@@ -157,7 +176,7 @@
 	else {
 	for (var i = 0; i < cansize ; i++) {
             $scope.line.push({col: "none"});
-            };	
+            };
 	}
         };
         $scope.save = function() {
@@ -166,9 +185,10 @@
           $scope.savearr = save;
         };
         $scope.load = function() {
-          if ($scope.loader != NaN) {
+        if ($scope.loader != NaN) {
           save = JSON.parse($scope.loader);
           $scope.line = save;
+          cansize = $scope.line.length;
           $scope.loading = true;
         }
         else {
@@ -179,13 +199,25 @@
         //
         // }
         };
-        $scope.setconfrim = function() {
+        $scope.setconfirm = function() {
           cansize = 80 * $scope.ySize;
-          $scope.line = [];
-          for (var i = 0; i < cansize ; i++) {
-            $scope.line.push({col: "none"});
+          if ($scope.gridShow == true) {
+            $scope.grid = "grid";
+          }
+          else {
+            $scope.grid = "none";
+          }
+          if ($scope.line.length < cansize) {
+            for (var i = $scope.line.length ; i < cansize ; i++) {
+              $scope.line.push({col: "none"});
+              };
+          };
+          if ($scope.line.length > cansize) {
+            for (var i = $scope.line.length ; i > cansize ; i--) {
+              $scope.line.pop();
+              };
             };
-          $scope.settings = true;
+           $scope.sethide = true;
         };
       };
     </script>
