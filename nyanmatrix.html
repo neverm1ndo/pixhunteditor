@@ -99,10 +99,10 @@
             <p>
               <i class="fa fa-paint-brush" aria-hidden="true"></i>Brush Size
             </p>
-              <button ng-click="brushmode = '1px'">1px</button>
-              <button ng-click="brushmode = '4px'">4px</button>
-              <button ng-click="brushmode = '9px'">9px square</button>
-              <button ng-click="brushmode = '15px'">15px square</button>
+              <button ng-click="brushmodel1()">1px</button>
+              <button ng-click="brushmodel4()">4px square</button>
+              <button ng-click="brushmodel9()">9px square</button>
+              <button ng-click="brushmodel13()">13px circle</button>
         </div>
       </div>
       <div class="saveling" ng-hide="saveling">
@@ -177,14 +177,64 @@
           curcol = $scope.curcol;
           $scope.ermode = true;
         };
+        $scope.brushmodel1 = function() {
+          mode = "brush1";
+          $scope.brushmode = "1px";
+        }
+        $scope.brushmodel4 = function() {
+          mode = "brush4";
+          $scope.brushmode = "4px";
+        }
+        $scope.brushmodel9 = function() {
+          mode = "brush9";
+          $scope.brushmode = "9px";
+        }
+        $scope.brushmodel13 = function() {
+          mode = "brush13";
+          $scope.brushmode = "13px";
+        }
         $scope.cleaner = function() {
           $scope.ermode = false;
           $scope.curcol = "cleaner";
           $scope.generalClass = "pinkb"
         };
         $scope.fill = function() {
+          if (mode == "brush1"){
           $scope.line[index]['col'] = $scope.curcol;
-        //  console.log('pix#' + index + ' filled by ' + $scope.curcol);
+          //  console.log('pix#' + index + ' filled by ' + $scope.curcol);
+          }
+          if (mode == "brush4") {
+            $scope.line[index]['col'] = $scope.curcol;
+            $scope.line[index + 1]['col'] = $scope.curcol;
+            $scope.line[index - 80]['col'] = $scope.curcol;
+            $scope.line[index - 79]['col'] = $scope.curcol;
+          }
+          if (mode == "brush9") {
+            $scope.line[index]['col'] = $scope.curcol;
+            $scope.line[index + 1]['col'] = $scope.curcol;
+            $scope.line[index - 80]['col'] = $scope.curcol;
+            $scope.line[index - 81]['col'] = $scope.curcol;
+            $scope.line[index - 79]['col'] = $scope.curcol;
+            $scope.line[index + 80]['col'] = $scope.curcol;
+            $scope.line[index + 81]['col'] = $scope.curcol;
+            $scope.line[index + 79]['col'] = $scope.curcol;
+            $scope.line[index - 1]['col'] = $scope.curcol;
+          }
+          if (mode == "brush13") {
+            $scope.line[index]['col'] = $scope.curcol;
+            $scope.line[index + 1]['col'] = $scope.curcol;
+            $scope.line[index + 2]['col'] = $scope.curcol;
+            $scope.line[index - 80]['col'] = $scope.curcol;
+            $scope.line[index - 160]['col'] = $scope.curcol;
+            $scope.line[index - 81]['col'] = $scope.curcol;
+            $scope.line[index - 79]['col'] = $scope.curcol;
+            $scope.line[index + 80]['col'] = $scope.curcol;
+            $scope.line[index + 160]['col'] = $scope.curcol;
+            $scope.line[index + 81]['col'] = $scope.curcol;
+            $scope.line[index + 79]['col'] = $scope.curcol;
+            $scope.line[index - 1]['col'] = $scope.curcol;
+            $scope.line[index - 2]['col'] = $scope.curcol;
+          }
         };
         $scope.clear = function() {
           $scope.line = [];
