@@ -8,12 +8,13 @@
     </script>
     <script src="pixcontdirve.js"></script>
     <script src="pix.js"></script>
+    <script src="https://use.fontawesome.com/e3fd6275a9.js"></script>
     <link href="style.css" rel="stylesheet"/>
     <title>PixelHunt Editor</title>
   </head>
   <body ng-app="nyanmatrix">
     <p class="apptitle">
-      PixelHunt Alpha v.0.0.9 by Mironov MIkhail
+      PixelHunt Alpha v.0.1.1 by Mironov MIkhail
     </p>
     <div class="matrix" ng-controller="matrixcontrol">
       <span ng-click="fill()" class="fld" ng-repeat="(sym, col) in line track by $index">
@@ -70,33 +71,33 @@
             <button ng-click="brush($event)" id="yo" class="yo"></button>
           </li>
           <li>
-            <button ng-click="cleaner()" class="clear">Eraser</button>
+            <button ng-click="cleaner()" class="clear-short"><i class="fa fa-eraser" aria-hidden="true"></i></button>
           </li>
           <li>
-            <button ng-click="brushSize()" class="clear">Brush</button>
+            <button ng-click="brushSize()" class="clear-short"><i class="fa fa-paint-brush" aria-hidden="true"></i></button>
           </li>
           <li>
-            <button ng-click="clear()" class="clear">Clear all</button>
+            <button ng-click="clear()" class="clear-short"><i class="fa fa-times" aria-hidden="true"></i></button>
           </li>
           <li>
-            <button ng-click="save()" class="clear">Save</button>
+            <button ng-click="save()" class="clear-short"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
           </li>
           <li>
-            <button ng-click="loading = false" class="clear">Load</button>
+            <button ng-click="loading = false" class="clear-short"><i class="fa fa-download" aria-hidden="true"></i></button>
           </li>
           <li>
-            <button ng-click="sethide = false" class="clear">Settings</button>
+            <button ng-click="sethide = false" class="clear-short"><i class="fa fa-cog" aria-hidden="true"></i></button>
           </li>
         </ul>
         <div class="curcol {{generalClass}}">
-          <span class="emodwarn">{{emode}}</span>
+          <span class="emodwarn"><i ng-hide="ermode" class="fa fa-eraser" aria-hidden="true"></i></span>
         </div>
-        <div class="curcol">
+        <div class="curbrush">
           <span class="brushmode">{{brushmode}}</span>
         </div>
         <div class="brush-size" ng-hide="brushSizer">
             <p>
-              Brush Size
+              <i class="fa fa-paint-brush" aria-hidden="true"></i>Brush Size
             </p>
               <button ng-click="brushmode = '1px'">1px</button>
               <button ng-click="brushmode = '4px'">4px</button>
@@ -159,6 +160,7 @@
         $scope.loading = true;
         $scope.sethide = true;
         $scope.brushSizer = true;
+        $scope.ermode = true;
         $scope.ySize = 40;
         $scope.brushmode = "1px";
         $scope.canfills = [{col: "white"}, {col: "pepe"}];
@@ -173,11 +175,12 @@
           $scope.generalClass = e.target.getAttribute('class');
           $scope.curcol = $scope.generalClass;
           curcol = $scope.curcol;
-          $scope.emode = " ";
+          $scope.ermode = true;
         };
         $scope.cleaner = function() {
-          $scope.emode = "Eraser mode!"
+          $scope.ermode = false;
           $scope.curcol = "cleaner";
+          $scope.generalClass = "pinkb"
         };
         $scope.fill = function() {
           $scope.line[index]['col'] = $scope.curcol;
@@ -222,7 +225,7 @@
           };
         };
         $scope.setconfirm = function() {
-          cansize = $scope.xSize * $scope.ySize;
+          cansize = 80 * $scope.ySize;
           if ($scope.gridShow == true) {
             $scope.grid = "grid";
           }
