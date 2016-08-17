@@ -73,6 +73,9 @@
             <button ng-click="cleaner()" class="clear">Eraser</button>
           </li>
           <li>
+            <button ng-click="brushSize()" class="clear">Brush</button>
+          </li>
+          <li>
             <button ng-click="clear()" class="clear">Clear all</button>
           </li>
           <li>
@@ -87,6 +90,18 @@
         </ul>
         <div class="curcol {{generalClass}}">
           <span class="emodwarn">{{emode}}</span>
+        </div>
+        <div class="curcol">
+          <span class="brushmode">{{brushmode}}</span>
+        </div>
+        <div class="brush-size" ng-hide="brushSizer">
+            <p>
+              Brush Size
+            </p>
+              <button ng-click="brushmode = '1px'">1px</button>
+              <button ng-click="brushmode = '4px'">4px</button>
+              <button ng-click="brushmode = '9px'">9px square</button>
+              <button ng-click="brushmode = '15px'">15px square</button>
         </div>
       </div>
       <div class="saveling" ng-hide="saveling">
@@ -137,12 +152,15 @@
       var save;
       var cansize;
       var cancol;
+      var mode;
       function matrixcontrol($scope) {
         $scope.line = [];
         $scope.saveling = true;
         $scope.loading = true;
         $scope.sethide = true;
+        $scope.brushSizer = true;
         $scope.ySize = 40;
+        $scope.brushmode = "1px";
         $scope.canfills = [{col: "white"}, {col: "pepe"}];
         for (var i = 0; i < cansize ; i++) {
           $scope.line.push({col: "none"});
@@ -150,7 +168,7 @@
         clear = $scope.line;
         $scope.emode = " ";
         $scope.curcol = curcol;
-        $scope.generalClass = 'white';
+        $scope.generalClass = 'pinkb';
         $scope.brush = function(e) {
           $scope.generalClass = e.target.getAttribute('class');
           $scope.curcol = $scope.generalClass;
@@ -177,6 +195,14 @@
                $scope.line.push({col: "none"});
              };
 	          }
+        };
+        $scope.brushSize = function() {
+          if ($scope.brushSizer == true) {
+            $scope.brushSizer = false;
+          }
+          else {
+            $scope.brushSizer = true;
+          }
         };
         $scope.save = function() {
           $scope.saveling = false;

@@ -1,6 +1,10 @@
+@import 'https://fonts.googleapis.com/css?family=Press+Start+2P';
 html, body {
   background-color: #070707;
   font-family: 'Arial', sans-serif;
+}
+.appname {
+
 }
 .apptitle {
   position: absolute;
@@ -200,6 +204,48 @@ margin-right: 50px;
   font-size: 10px;
   color: #ffffff;
   margin-left: -10px;
+}
+.brush-size {
+  position: absolute;
+  padding-top: 20px;
+  width: 200px;
+  height: 60px;
+  background: #303030;
+  left: 100px;
+  top: 290px;
+  border: 2px solid #4a4a4a;
+}
+.brush-size p {
+position: absolute;
+top: -3px;
+left: 5px;
+font-size: 10px;
+color: #8a8a8a;
+}
+.brush-size button {
+  background: #202020;
+  font-size: 9px;
+  color: #8a8a8a;
+  width: 40px;
+  height: 40px;
+  margin: 10px 5px;
+  left: 0;
+  right: 0;
+  float: left;
+  position: relative;
+  transition: 0.1s linear;
+}
+.brush-size button:hover {
+  background: #272727;
+}
+.brushmode {
+  font-size: 10px;
+  color: #8a8a8a;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 13px auto;
 }
 /*span:nth-child(80) {
   background: white;
