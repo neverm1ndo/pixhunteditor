@@ -14,7 +14,7 @@
   </head>
   <body ng-app="nyanmatrix">
     <p class="apptitle">
-      PixelHunt Alpha v.0.1.1 by Mironov MIkhail
+      PixelHunt Alpha v.0.2.0 by Mironov MIkhail
     </p>
     <div class="matrix" ng-controller="matrixcontrol">
       <span ng-click="fill()" class="fld" ng-repeat="(sym, col) in line track by $index">
@@ -71,13 +71,19 @@
             <button ng-click="brush($event)" id="yo" class="yo"></button>
           </li>
           <li>
+            <button ng-click="undo()" class="clear-short"><i class="fa fa-undo" aria-hidden="true"></i></button>
+          </li>
+          <li>
+            <button ng-click="redo()" class="clear-short"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+          </li>
+          <li>
             <button ng-click="cleaner()" class="clear-short"><i class="fa fa-eraser" aria-hidden="true"></i></button>
           </li>
           <li>
             <button ng-click="brushSize()" class="clear-short"><i class="fa fa-paint-brush" aria-hidden="true"></i></button>
           </li>
           <li>
-            <button ng-click="clear()" class="clear-short"><i class="fa fa-times" aria-hidden="true"></i></button>
+            <button ng-click="clear()" class="clear-short" title="Refresh canvas"><i class="fa fa-refresh" aria-hidden="true"></i></button>
           </li>
           <li>
             <button ng-click="save()" class="clear-short"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
@@ -101,13 +107,14 @@
             </p>
               <button ng-click="brushmodel1()">1px</button>
               <button ng-click="brushmodel4()">4px square</button>
+              <button ng-click="brushmodel5()">5px circle</button>
               <button ng-click="brushmodel9()">9px square</button>
               <button ng-click="brushmodel13()">13px circle</button>
         </div>
       </div>
       <div class="saveling" ng-hide="saveling">
         <p>
-          Copy, and save this to .txd
+          Copy, and save this to *.txt
         </p>
         <textarea placeholder="Whoops...">{{savearr}}</textarea>
         <button ng-click="saveling = true">I saved this as TXT</button>
@@ -131,8 +138,11 @@
         <p class="cansize">
           <span class="setname">Canvas color : </span>
             <select ng-options="canfill as canfill.col for canfill in calfills track by canfill.id" ng-model="cancol">
-              <option value="">
-                nyanspace
+              <option>
+                nyanspace(default)
+              </option>
+              <option>
+                white
               </option>
             </select>
         </p>
@@ -153,7 +163,7 @@
       var save;
       var cansize;
       var cancol;
-      var mode;
+      var mode = "brush1";
       function matrixcontrol($scope) {
         $scope.line = [];
         $scope.saveling = true;
@@ -169,9 +179,9 @@
         }
         clear = $scope.line;
         $scope.emode = " ";
-        $scope.curcol = curcol;
         $scope.generalClass = 'pinkb';
-        $scope.brush = function(e) {
+        $scope.curcol = $scope.generalClass;
+      $scope.brush = function(e) {
           $scope.generalClass = e.target.getAttribute('class');
           $scope.curcol = $scope.generalClass;
           curcol = $scope.curcol;
@@ -184,6 +194,10 @@
         $scope.brushmodel4 = function() {
           mode = "brush4";
           $scope.brushmode = "4px";
+        }
+        $scope.brushmodel5 = function() {
+          mode = "brush5";
+          $scope.brushmode = "5px";
         }
         $scope.brushmodel9 = function() {
           mode = "brush9";
@@ -202,13 +216,20 @@
           if (mode == "brush1"){
           $scope.line[index]['col'] = $scope.curcol;
           //  console.log('pix#' + index + ' filled by ' + $scope.curcol);
-          }
+        };
           if (mode == "brush4") {
             $scope.line[index]['col'] = $scope.curcol;
             $scope.line[index + 1]['col'] = $scope.curcol;
             $scope.line[index - 80]['col'] = $scope.curcol;
             $scope.line[index - 79]['col'] = $scope.curcol;
-          }
+          };
+          if (mode == "brush5") {
+            $scope.line[index]['col'] = $scope.curcol;
+            $scope.line[index + 1]['col'] = $scope.curcol;
+            $scope.line[index - 80]['col'] = $scope.curcol;
+            $scope.line[index + 80]['col'] = $scope.curcol;
+            $scope.line[index - 1]['col'] = $scope.curcol;
+          };
           if (mode == "brush9") {
             $scope.line[index]['col'] = $scope.curcol;
             $scope.line[index + 1]['col'] = $scope.curcol;
@@ -219,7 +240,7 @@
             $scope.line[index + 81]['col'] = $scope.curcol;
             $scope.line[index + 79]['col'] = $scope.curcol;
             $scope.line[index - 1]['col'] = $scope.curcol;
-          }
+          };
           if (mode == "brush13") {
             $scope.line[index]['col'] = $scope.curcol;
             $scope.line[index + 1]['col'] = $scope.curcol;
@@ -234,7 +255,7 @@
             $scope.line[index + 79]['col'] = $scope.curcol;
             $scope.line[index - 1]['col'] = $scope.curcol;
             $scope.line[index - 2]['col'] = $scope.curcol;
-          }
+          };
         };
         $scope.clear = function() {
           $scope.line = [];
@@ -255,7 +276,7 @@
           }
           else {
             $scope.brushSizer = true;
-          }
+          };
         };
         $scope.save = function() {
           $scope.saveling = false;
@@ -281,7 +302,7 @@
           }
           else {
             $scope.grid = "none";
-          }
+          };
           if ($scope.line.length < cansize) {
             for (var i = $scope.line.length ; i < cansize ; i++) {
               $scope.line.push({col: "none"});
