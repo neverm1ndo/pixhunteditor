@@ -13,6 +13,9 @@
     <title>PixelHunt Editor</title>
   </head>
   <body ng-app="nyanmatrix">
+    <div class="logo">
+      <img ng-src="src/pixhuntlogo.png"/>
+    </div>
     <p class="apptitle">
       PixelHunt Alpha v.0.2.0 by Mironov MIkhail
     </p>
@@ -71,10 +74,10 @@
             <button ng-click="brush($event)" id="yo" class="yo"></button>
           </li>
           <li>
-            <button ng-click="undo()" class="clear-short"><i class="fa fa-undo" aria-hidden="true"></i></button>
+            <button ng-click="undo()" class="clear-short" title="Undo"><i class="fa fa-reply" aria-hidden="true"></i></button>
           </li>
           <li>
-            <button ng-click="redo()" class="clear-short"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+            <button ng-click="redo()" class="clear-short" title="Redo"><i class="fa fa-share" aria-hidden="true"></i></button>
           </li>
           <li>
             <button ng-click="cleaner()" class="clear-short"><i class="fa fa-eraser" aria-hidden="true"></i></button>

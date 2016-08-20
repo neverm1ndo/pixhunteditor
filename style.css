@@ -1,10 +1,17 @@
 @import 'https://fonts.googleapis.com/css?family=Press+Start+2P';
 html, body {
   background-color: #070707;
+  min-width: 600px;
   font-family: 'Arial', sans-serif;
 }
-.appname {
-
+.logo {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 450px;
+  height: 160px;
+  top: 50%;
+  margin: -80px auto;
 }
 .apptitle {
   position: absolute;
