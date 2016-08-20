@@ -6,6 +6,7 @@
     <script>
       angular.module('nyanmatrix', []);
     </script>
+    <script src="app.js"></script>
     <script src="pixcontdirve.js"></script>
     <script src="pix.js"></script>
     <script src="https://use.fontawesome.com/e3fd6275a9.js"></script>
@@ -16,9 +17,9 @@
     <div class="logo">
       <img ng-src="src/pixhuntlogo.png"/>
     </div>
-    <p class="apptitle">
+    <!-- <p class="apptitle">
       PixelHunt Alpha v.0.2.0 by Mironov MIkhail
-    </p>
+    </p> -->
     <div class="matrix" ng-controller="matrixcontrol">
       <span ng-click="fill()" class="fld" ng-repeat="(sym, col) in line track by $index">
           <div ng-controller="pix" ng-click="fill()" class="{{line[$index]['col']}} {{grid}}"></div>
@@ -129,196 +130,29 @@
         </p>
         <textarea ng-model="loader" placeholder="Paste here your save file..."></textarea>
         <button ng-click="load()">I want to load this</button>
+        <button ng-click="loading = true">I have nothing to load</button>
       </div>
       <div class="settings" ng-hide="sethide">
         <h2>
-          Settings
+          <i class="fa fa-cog" aria-hidden="true"></i> Settings
         </h2>
-        <hr/>
         <p class="cansize">
           <span class="setname">Canvas Size : </span><input ng-model="xSize" placeholder="80" type="text"/> x <input ng-model="ySize" placeholder="24" type="text"/>
         </p>
-        <p class="cansize">
+        <!-- <p class="cansize">
           <span class="setname">Canvas color : </span>
             <select ng-options="canfill as canfill.col for canfill in calfills track by canfill.id" ng-model="cancol">
-              <option>
+              <option type="">
                 nyanspace(default)
               </option>
-              <option>
-                white
-              </option>
             </select>
-        </p>
+        </p> -->
         <p class="cansize">
           <span class="setname">Show grid : </span><input type="checkbox" ng-model="gridShow"/>
         </p>
-        <hr />
         <button ng-click="setconfirm()">Confirm</button>
         <button ng-click="sethide = true">Close</button>
       </div>
     </div>
-    <script>
-      'use strict';
-      angular.module('nyanmatrix').controller('matrixcontrol', ['$scope', matrixcontrol]);
-      var curcol = "pinkb";
-      var index;
-      var clear;
-      var save;
-      var cansize;
-      var cancol;
-      var mode = "brush1";
-      function matrixcontrol($scope) {
-        $scope.line = [];
-        $scope.saveling = true;
-        $scope.loading = true;
-        $scope.sethide = true;
-        $scope.brushSizer = true;
-        $scope.ermode = true;
-        $scope.ySize = 40;
-        $scope.brushmode = "1px";
-        $scope.canfills = [{col: "white"}, {col: "pepe"}];
-        for (var i = 0; i < cansize ; i++) {
-          $scope.line.push({col: "none"});
-        }
-        clear = $scope.line;
-        $scope.emode = " ";
-        $scope.generalClass = 'pinkb';
-        $scope.curcol = $scope.generalClass;
-      $scope.brush = function(e) {
-          $scope.generalClass = e.target.getAttribute('class');
-          $scope.curcol = $scope.generalClass;
-          curcol = $scope.curcol;
-          $scope.ermode = true;
-        };
-        $scope.brushmodel1 = function() {
-          mode = "brush1";
-          $scope.brushmode = "1px";
-        }
-        $scope.brushmodel4 = function() {
-          mode = "brush4";
-          $scope.brushmode = "4px";
-        }
-        $scope.brushmodel5 = function() {
-          mode = "brush5";
-          $scope.brushmode = "5px";
-        }
-        $scope.brushmodel9 = function() {
-          mode = "brush9";
-          $scope.brushmode = "9px";
-        }
-        $scope.brushmodel13 = function() {
-          mode = "brush13";
-          $scope.brushmode = "13px";
-        }
-        $scope.cleaner = function() {
-          $scope.ermode = false;
-          $scope.curcol = "cleaner";
-          $scope.generalClass = "pinkb"
-        };
-        $scope.fill = function() {
-          if (mode == "brush1"){
-          $scope.line[index]['col'] = $scope.curcol;
-          //  console.log('pix#' + index + ' filled by ' + $scope.curcol);
-        };
-          if (mode == "brush4") {
-            $scope.line[index]['col'] = $scope.curcol;
-            $scope.line[index + 1]['col'] = $scope.curcol;
-            $scope.line[index - 80]['col'] = $scope.curcol;
-            $scope.line[index - 79]['col'] = $scope.curcol;
-          };
-          if (mode == "brush5") {
-            $scope.line[index]['col'] = $scope.curcol;
-            $scope.line[index + 1]['col'] = $scope.curcol;
-            $scope.line[index - 80]['col'] = $scope.curcol;
-            $scope.line[index + 80]['col'] = $scope.curcol;
-            $scope.line[index - 1]['col'] = $scope.curcol;
-          };
-          if (mode == "brush9") {
-            $scope.line[index]['col'] = $scope.curcol;
-            $scope.line[index + 1]['col'] = $scope.curcol;
-            $scope.line[index - 80]['col'] = $scope.curcol;
-            $scope.line[index - 81]['col'] = $scope.curcol;
-            $scope.line[index - 79]['col'] = $scope.curcol;
-            $scope.line[index + 80]['col'] = $scope.curcol;
-            $scope.line[index + 81]['col'] = $scope.curcol;
-            $scope.line[index + 79]['col'] = $scope.curcol;
-            $scope.line[index - 1]['col'] = $scope.curcol;
-          };
-          if (mode == "brush13") {
-            $scope.line[index]['col'] = $scope.curcol;
-            $scope.line[index + 1]['col'] = $scope.curcol;
-            $scope.line[index + 2]['col'] = $scope.curcol;
-            $scope.line[index - 80]['col'] = $scope.curcol;
-            $scope.line[index - 160]['col'] = $scope.curcol;
-            $scope.line[index - 81]['col'] = $scope.curcol;
-            $scope.line[index - 79]['col'] = $scope.curcol;
-            $scope.line[index + 80]['col'] = $scope.curcol;
-            $scope.line[index + 160]['col'] = $scope.curcol;
-            $scope.line[index + 81]['col'] = $scope.curcol;
-            $scope.line[index + 79]['col'] = $scope.curcol;
-            $scope.line[index - 1]['col'] = $scope.curcol;
-            $scope.line[index - 2]['col'] = $scope.curcol;
-          };
-        };
-        $scope.clear = function() {
-          $scope.line = [];
-	         if ($scope.xSize = "") {
-             for (var i = 0; i < 1920 ; i++) {
-               $scope.line.push({col: "none"});
-             };
-	          }
-	        else {
-	           for (var i = 0; i < cansize ; i++) {
-               $scope.line.push({col: "none"});
-             };
-	          }
-        };
-        $scope.brushSize = function() {
-          if ($scope.brushSizer == true) {
-            $scope.brushSizer = false;
-          }
-          else {
-            $scope.brushSizer = true;
-          };
-        };
-        $scope.save = function() {
-          $scope.saveling = false;
-          save = JSON.stringify($scope.line);
-          $scope.savearr = save;
-        };
-        $scope.load = function() {
-          if ($scope.loader != NaN) {
-            save = JSON.parse($scope.loader);
-            $scope.line = save;
-            cansize = $scope.line.length;
-            $scope.loading = true;
-          }
-          else {
-            $scope.line = [];
-            $scope.loading = true;
-          };
-        };
-        $scope.setconfirm = function() {
-          cansize = 80 * $scope.ySize;
-          if ($scope.gridShow == true) {
-            $scope.grid = "grid";
-          }
-          else {
-            $scope.grid = "none";
-          };
-          if ($scope.line.length < cansize) {
-            for (var i = $scope.line.length ; i < cansize ; i++) {
-              $scope.line.push({col: "none"});
-              };
-          };
-          if ($scope.line.length > cansize) {
-            for (var i = $scope.line.length ; i > cansize ; i--) {
-              $scope.line.pop();
-              };
-            };
-           $scope.sethide = true;
-        };
-      };
-    </script>
   </body>
 </html>
