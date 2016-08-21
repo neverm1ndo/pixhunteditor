@@ -4,14 +4,20 @@ html, body {
   min-width: 600px;
   font-family: 'Arial', sans-serif;
 }
+button {
+  outline: none;
+}
 .logo {
   position: fixed;
-  left: 0;
-  right: 0;
+  left: 120px;
+  right: 120px;
   width: 450px;
   height: 160px;
   top: 50%;
   margin: -80px auto;
+}
+.palitlogo {
+  margin-bottom: -5px;
 }
 .apptitle {
   position: absolute;
@@ -143,7 +149,7 @@ margin-right: 50px;
   margin: 0;
   float: left;
   font-weight: 600;
-  background: #003466;
+  background: #fafafa;
   cursor: none;
 }
 .fld:hover {opacity: 0.5;}
@@ -152,8 +158,8 @@ margin-right: 50px;
   height: 12px;
   transition: 0.08s linear;
   opacity: 1;
-  border-top: 1px dotted transparent;
-  border-right: 1px dotted transparent;
+  border-top: 1px solid transparent;
+  border-right: 1px solid transparent;
 }
 .palit {
   background: #131313;
@@ -187,11 +193,11 @@ margin-right: 50px;
   cursor: pointer;
 }
 .curcol {
-  width: 42px;
-  height: 42px;
+  width: 62px;
+  height: 32px;
   float: right;
-  margin-right: 26px;
-  margin-top: 20px;
+  margin-right: 16px;
+  margin-top: 10px;
   bottom: -100px;
   cursor: pointer;
   transition: 0.08s linear;
@@ -199,11 +205,11 @@ margin-right: 50px;
   z-index: 110;
 }
 .curbrush {
-  width: 42px;
-  height: 42px;
+  width: 62px;
+  height: 32px;
   float: right;
-  margin-right: 26px;
-  margin-top: 20px;
+  margin-right: 16px;
+  margin-top: 10px;
   bottom: -100px;
   cursor: pointer;
   transition: 0.08s linear;
@@ -231,20 +237,43 @@ margin-right: 50px;
 }
 .emodwarn {
   position: absolute;
-  margin-top: 10px;
   font-size: 20px;
   color: #fcfcfc;
-  margin-left: 10px;
+  margin: 5px 20px;
 }
 .brush-size {
   position: absolute;
   padding-top: 20px;
-  width: 250px;
-  height: 60px;
+  width: 100px;
+  height: 150px;
   background: #181818;
-  left: 102px;
-  top: 290px;
+  left: 98px;
+  top: 350px;
   border: 2px solid #212121;
+}
+.brush-size:before {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  margin-left: -122px;
+  margin-top: -18px;
+  border-right: 10px solid #212121;
+  border-top: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+.brush-size:after {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  margin-left: -120px;
+  margin-top: -18px;
+  border-right: 10px solid #181818;
+  border-top: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid transparent;
 }
 .brush-size p {
 position: absolute;
@@ -262,7 +291,7 @@ color: #8a8a8a;
   color: #8a8a8a;
   width: 40px;
   height: 40px;
-  margin: 10px 5px;
+  margin: 5px 5px;
   left: 0;
   right: 0;
   float: left;
@@ -279,7 +308,7 @@ color: #8a8a8a;
   position: absolute;
   left: 0;
   right: 0;
-  margin: 13px auto;
+  margin: 9px auto;
 }
 /*span:nth-child(80) {
   background: white;
@@ -301,4 +330,4 @@ color: #8a8a8a;
 .brown {background: #a7593a;}
 .yo {background: #ecd349;}
 .cleaner {background: transparent;}
-.grid {border-top: 1px dotted #555555!important; border-right: 1px dotted #555555!important;}
+.grid {border-top: 1px solid #555555!important; border-right: 1px solid #555555!important;}

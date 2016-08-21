@@ -25,6 +25,9 @@
           <div ng-controller="pix" ng-click="fill()" class="{{line[$index]['col']}} {{grid}}"></div>
       </span>
       <div class="palit">
+        <div class="palitlogo">
+          <img ng-src="src/pixhuntlogom.png"/>
+        </div>
         <ul>
           <li>
             <button ng-click="brush($event)" id="red" class="red"></button>
@@ -114,6 +117,7 @@
               <button ng-click="brushmodel5()">5px circle</button>
               <button ng-click="brushmodel9()">9px square</button>
               <button ng-click="brushmodel13()">13px circle</button>
+              <button ng-click="brushmodel22()">22px square</button>
         </div>
       </div>
       <div class="saveling" ng-hide="saveling">

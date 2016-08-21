@@ -50,6 +50,10 @@ $scope.brush = function(e) {
     mode = "brush13";
     $scope.brushmode = "13px";
   }
+  $scope.brushmodel22 = function() {
+    mode = "brush22";
+    $scope.brushmode = "22px";
+  }
   $scope.cleaner = function() {
     $scope.ermode = false;
     $scope.curcol = "cleaner";
@@ -60,20 +64,20 @@ $scope.brush = function(e) {
     $scope.line[index]['col'] = $scope.curcol;
     //  console.log('pix#' + index + ' filled by ' + $scope.curcol);
   };
-    if (mode == "brush4") {
+    if (mode == "brush4") {  //that brush makes me cry
       $scope.line[index]['col'] = $scope.curcol;
       $scope.line[index + 1]['col'] = $scope.curcol;
       $scope.line[index - 80]['col'] = $scope.curcol;
       $scope.line[index - 79]['col'] = $scope.curcol;
     };
-    if (mode == "brush5") {
+    if (mode == "brush5") {  //that brush makes me cry
       $scope.line[index]['col'] = $scope.curcol;
       $scope.line[index + 1]['col'] = $scope.curcol;
       $scope.line[index - 80]['col'] = $scope.curcol;
       $scope.line[index + 80]['col'] = $scope.curcol;
       $scope.line[index - 1]['col'] = $scope.curcol;
     };
-    if (mode == "brush9") {
+    if (mode == "brush9") { //that brush makes me cry
       $scope.line[index]['col'] = $scope.curcol;
       $scope.line[index + 1]['col'] = $scope.curcol;
       $scope.line[index - 80]['col'] = $scope.curcol;
@@ -84,7 +88,7 @@ $scope.brush = function(e) {
       $scope.line[index + 79]['col'] = $scope.curcol;
       $scope.line[index - 1]['col'] = $scope.curcol;
     };
-    if (mode == "brush13") {
+    if (mode == "brush13") { //that brush makes me cry
       $scope.line[index]['col'] = $scope.curcol;
       $scope.line[index + 1]['col'] = $scope.curcol;
       $scope.line[index + 2]['col'] = $scope.curcol;
@@ -96,6 +100,33 @@ $scope.brush = function(e) {
       $scope.line[index + 160]['col'] = $scope.curcol;
       $scope.line[index + 81]['col'] = $scope.curcol;
       $scope.line[index + 79]['col'] = $scope.curcol;
+      $scope.line[index - 1]['col'] = $scope.curcol;
+      $scope.line[index - 2]['col'] = $scope.curcol;
+    };
+    if (mode == "brush22") { //that brush makes me cry so much
+      $scope.line[index]['col'] = $scope.curcol;
+      $scope.line[index + 1]['col'] = $scope.curcol;
+      $scope.line[index + 2]['col'] = $scope.curcol;
+      $scope.line[index - 80]['col'] = $scope.curcol;
+      $scope.line[index - 160]['col'] = $scope.curcol;
+      $scope.line[index - 161]['col'] = $scope.curcol;
+      $scope.line[index - 162]['col'] = $scope.curcol;
+      $scope.line[index - 159]['col'] = $scope.curcol;
+      $scope.line[index - 158]['col'] = $scope.curcol;
+      $scope.line[index - 81]['col'] = $scope.curcol;
+      $scope.line[index - 82]['col'] = $scope.curcol;
+      $scope.line[index - 79]['col'] = $scope.curcol;
+      $scope.line[index - 78]['col'] = $scope.curcol;
+      $scope.line[index + 80]['col'] = $scope.curcol;
+      $scope.line[index + 160]['col'] = $scope.curcol;
+      $scope.line[index + 161]['col'] = $scope.curcol;
+      $scope.line[index + 162]['col'] = $scope.curcol;
+      $scope.line[index + 159]['col'] = $scope.curcol;
+      $scope.line[index + 158]['col'] = $scope.curcol;
+      $scope.line[index + 81]['col'] = $scope.curcol;
+      $scope.line[index + 82]['col'] = $scope.curcol;
+      $scope.line[index + 79]['col'] = $scope.curcol;
+      $scope.line[index + 78]['col'] = $scope.curcol;
       $scope.line[index - 1]['col'] = $scope.curcol;
       $scope.line[index - 2]['col'] = $scope.curcol;
     };
