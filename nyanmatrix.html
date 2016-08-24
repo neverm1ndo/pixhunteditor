@@ -22,7 +22,7 @@
     </p> -->
     <div class="matrix" ng-controller="matrixcontrol">
       <span ng-click="fill()" class="fld" ng-repeat="(sym, col) in line track by $index">
-          <div ng-controller="pix" ng-click="fill()" class="{{line[$index]['col']}} {{grid}}"></div>
+          <div ng-controller="pix" ng-click="fill()" class="{{line[$index]['col']}} {{grid}} {{brushPoint}}"></div>
       </span>
       <div class="palit">
         <div class="palitlogo">

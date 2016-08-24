@@ -10,6 +10,7 @@ var hist;
 var lastMove;
 var stepLine;
 var step = 0;
+var brushArr;
 var mode = "brush1";
 function matrixcontrol($scope) {
   $scope.line = [];
@@ -70,71 +71,35 @@ $scope.brush = function(e) {
     $scope.line[index]['col'] = $scope.curcol;
     //  console.log('pix#' + index + ' filled by ' + $scope.curcol);
   };
-    if (mode == "brush4") {  //that brush makes me cry
-      $scope.line[index]['col'] = $scope.curcol;
-      $scope.line[index + 1]['col'] = $scope.curcol;
-      $scope.line[index - 80]['col'] = $scope.curcol;
-      $scope.line[index - 79]['col'] = $scope.curcol;
+    if (mode == "brush4") {
+      brushArr = [0, 1, -80, -79];
+      for ( brushArr; brushArr.length != 0 ; brushArr.pop()) {
+        $scope.line[index + brushArr[brushArr.length - 1]]['col'] = $scope.curcol;
+     };
     };
-    if (mode == "brush5") {  //that brush makes me cry
-      $scope.line[index]['col'] = $scope.curcol;
-      $scope.line[index + 1]['col'] = $scope.curcol;
-      $scope.line[index - 80]['col'] = $scope.curcol;
-      $scope.line[index + 80]['col'] = $scope.curcol;
-      $scope.line[index - 1]['col'] = $scope.curcol;
+    if (mode == "brush5") {
+      brushArr = [0, 1, -1, -80, 80];
+      for ( brushArr; brushArr.length != 0 ; brushArr.pop()) {
+        $scope.line[index + brushArr[brushArr.length - 1]]['col'] = $scope.curcol;
+     };
     };
     if (mode == "brush9") { //that brush makes me cry
-      $scope.line[index]['col'] = $scope.curcol;
-      $scope.line[index + 1]['col'] = $scope.curcol;
-      $scope.line[index - 80]['col'] = $scope.curcol;
-      $scope.line[index - 81]['col'] = $scope.curcol;
-      $scope.line[index - 79]['col'] = $scope.curcol;
-      $scope.line[index + 80]['col'] = $scope.curcol;
-      $scope.line[index + 81]['col'] = $scope.curcol;
-      $scope.line[index + 79]['col'] = $scope.curcol;
-      $scope.line[index - 1]['col'] = $scope.curcol;
+      brushArr = [0, 1, 79, 80, 81, -1, -79, -80, -81];
+      for ( brushArr; brushArr.length != 0 ; brushArr.pop()) {
+        $scope.line[index + brushArr[brushArr.length - 1]]['col'] = $scope.curcol;
+     };
     };
     if (mode == "brush13") { //that brush makes me cry
-      $scope.line[index]['col'] = $scope.curcol;
-      $scope.line[index + 1]['col'] = $scope.curcol;
-      $scope.line[index + 2]['col'] = $scope.curcol;
-      $scope.line[index - 80]['col'] = $scope.curcol;
-      $scope.line[index - 160]['col'] = $scope.curcol;
-      $scope.line[index - 81]['col'] = $scope.curcol;
-      $scope.line[index - 79]['col'] = $scope.curcol;
-      $scope.line[index + 80]['col'] = $scope.curcol;
-      $scope.line[index + 160]['col'] = $scope.curcol;
-      $scope.line[index + 81]['col'] = $scope.curcol;
-      $scope.line[index + 79]['col'] = $scope.curcol;
-      $scope.line[index - 1]['col'] = $scope.curcol;
-      $scope.line[index - 2]['col'] = $scope.curcol;
+      brushArr = [0, 1, 2, 79, 80, 81, 160, -1, -2, -79, -80, -81, -160];
+      for ( brushArr ;brushArr.length != 0 ; brushArr.pop()) {
+        $scope.line[index + brushArr[brushArr.length - 1]]['col'] = $scope.curcol;
+     };
     };
     if (mode == "brush22") { //that brush makes me cry so much
-      $scope.line[index]['col'] = $scope.curcol;
-      $scope.line[index + 1]['col'] = $scope.curcol;
-      $scope.line[index + 2]['col'] = $scope.curcol;
-      $scope.line[index - 80]['col'] = $scope.curcol;
-      $scope.line[index - 160]['col'] = $scope.curcol;
-      $scope.line[index - 161]['col'] = $scope.curcol;
-      $scope.line[index - 162]['col'] = $scope.curcol;
-      $scope.line[index - 159]['col'] = $scope.curcol;
-      $scope.line[index - 158]['col'] = $scope.curcol;
-      $scope.line[index - 81]['col'] = $scope.curcol;
-      $scope.line[index - 82]['col'] = $scope.curcol;
-      $scope.line[index - 79]['col'] = $scope.curcol;
-      $scope.line[index - 78]['col'] = $scope.curcol;
-      $scope.line[index + 80]['col'] = $scope.curcol;
-      $scope.line[index + 160]['col'] = $scope.curcol;
-      $scope.line[index + 161]['col'] = $scope.curcol;
-      $scope.line[index + 162]['col'] = $scope.curcol;
-      $scope.line[index + 159]['col'] = $scope.curcol;
-      $scope.line[index + 158]['col'] = $scope.curcol;
-      $scope.line[index + 81]['col'] = $scope.curcol;
-      $scope.line[index + 82]['col'] = $scope.curcol;
-      $scope.line[index + 79]['col'] = $scope.curcol;
-      $scope.line[index + 78]['col'] = $scope.curcol;
-      $scope.line[index - 1]['col'] = $scope.curcol;
-      $scope.line[index - 2]['col'] = $scope.curcol;
+      brushArr = [0, 1, 2, 78, 79, 80, 81, 82, 158, 159, 160, 161, 162, -1, -2, -78, -79, -80, -81, -82, -158, -159, -160, -161, -162];
+      for ( brushArr; brushArr.length != 0 ; brushArr.pop()) {
+        $scope.line[index + brushArr[brushArr.length - 1]]['col'] = $scope.curcol;
+     };
     };
     if (step < 4) {
       step = step + 1;
