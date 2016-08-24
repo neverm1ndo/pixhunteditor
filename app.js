@@ -6,9 +6,15 @@ var clear;
 var save;
 var cansize;
 var cancol;
+var hist;
+var lastMove;
+var stepLine;
+var step = 0;
 var mode = "brush1";
 function matrixcontrol($scope) {
   $scope.line = [];
+  hist = [];
+  // console.log(hist.length);
   $scope.saveling = true;
   $scope.loading = true;
   $scope.sethide = true;
@@ -130,11 +136,85 @@ $scope.brush = function(e) {
       $scope.line[index - 1]['col'] = $scope.curcol;
       $scope.line[index - 2]['col'] = $scope.curcol;
     };
+    if (step < 4) {
+      step = step + 1;
+      if  (hist.length == 5) {
+        for ( i = 4 ; i > step; i--) {
+          hist.pop();
+        };
+      };
+      // console.log(hist.length);
+      lastMove = JSON.stringify($scope.line);
+      hist.push(lastMove);
+      // console.log("step " + step);
+    }
+     else {
+       if (hist.length == 5) {
+          hist.shift();
+       };
+       lastMove = JSON.stringify($scope.line);
+       hist.push(lastMove);
+      //  console.log(hist.length)
+      //  console.log("step " + step);
+     };
+  };
+  $scope.undo = function() {
+    if ( step > 0 ) {
+      step = step - 1;
+      // console.log("step " + step);
+    };
+    function switchStep() {
+      switch (step) {
+        case 0:
+        $scope.line = JSON.parse(hist[0]);
+          break;
+        case 1:
+        $scope.line = JSON.parse(hist[1]);
+          break;
+        case 2:
+        $scope.line = JSON.parse(hist[2]);
+          break;
+        case 3:
+        $scope.line = JSON.parse(hist[3]);
+          break;
+        case 4:
+        $scope.line = JSON.parse(hist[4]);
+          break;
+      };
+    };
+    switchStep();
+  };
+  $scope.redo = function() {
+    if ( step < 4 ) {
+      step = step + 1;
+      // console.log("step " + step);
+    };
+    function switchStep() {
+      switch (step) {
+        case 0:
+          $scope.line = JSON.parse(hist[0]);
+        break;
+        case 1:
+          $scope.line = JSON.parse(hist[1]);
+        break;
+        case 2:
+          $scope.line = JSON.parse(hist[2]);
+        break;
+        case 3:
+          $scope.line = JSON.parse(hist[3]);
+        break;
+        case 4:
+          $scope.line = JSON.parse(hist[4]);
+        break;
+      };
+    };
+    switchStep();
+    // console.log(hist);
   };
   $scope.clear = function() {
     $scope.line = [];
      if ($scope.xSize = "") {
-       for (var i = 0; i < 1920 ; i++) {
+       for (var i = 0; i < cansize ; i++) {
          $scope.line.push({col: "none"});
        };
       }
@@ -158,9 +238,11 @@ $scope.brush = function(e) {
     $scope.savearr = save;
   };
   $scope.load = function() {
-    if ($scope.loader != NaN) {
+    if ($scope.loader != null) {
       save = JSON.parse($scope.loader);
       $scope.line = save;
+      // hist = [];
+      // lastMove.push($scope.line);
       cansize = $scope.line.length;
       $scope.loading = true;
     }
@@ -188,5 +270,7 @@ $scope.brush = function(e) {
         };
       };
      $scope.sethide = true;
+     lastMove = JSON.stringify($scope.line);
+     hist.push(lastMove);
   };
 };

@@ -132,7 +132,7 @@ margin-right: 50px;
 .matrix {
   position: absolute;
   background: transparent;
-  width: 1040px;
+  width: 1120px;
   left: 130px;
   right: 30px;
   top: 30px;
@@ -152,13 +152,17 @@ margin-right: 50px;
   background: #fafafa;
   cursor: none;
 }
-.fld:hover {opacity: 0.5;}
+.fld:hover {
+  opacity: 0.7;
+}
+.fld div:hover {
+  border: 1px solid #606060;
+}
 .fld div {
   width: 12px;
   height: 12px;
-  transition: 0.08s linear;
   opacity: 1;
-  border-top: 1px solid transparent;
+  border: 1px solid transparent;
   border-right: 1px solid transparent;
 }
 .palit {
