@@ -22,7 +22,8 @@ function matrixcontrol($scope) {
   $scope.ermode = true;
   $scope.ySize = 40;
   $scope.brushmode = "1px";
-  $scope.canfills = [{col: "white"}, {col: "pepe"}];
+  $scope.selectBg = "white";
+  $scope.bgcolors = ["white", "black","blue", "nyanspace"];
   for (var i = 0; i < cansize ; i++) {
     $scope.line.push({col: "none"});
   }

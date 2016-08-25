@@ -82,7 +82,7 @@ background: #151515;
   font-family: 'Arial', sans-serif;
   color: #ffffff;
   position: fixed;
-  height: 250px;
+  height: 300px;
   width: 280px;
   left: 0;
   right: 0;
@@ -93,6 +93,7 @@ background: #151515;
   z-index: 100;
   text-align: center;
   padding: 20px;
+  padding-top: 0px;
 }
 .settings p {
   color: #909090;
@@ -131,7 +132,10 @@ background: #151515;
 }
 .setname {
 width: 100px;
-margin-right: 50px;
+margin-right: 25px;
+}
+.setname i {
+  margin-right: 5px;
 }
 .cansize {
   border-top: 1px solid #202020;
@@ -157,7 +161,7 @@ margin-right: 50px;
   margin: 0;
   float: left;
   font-weight: 600;
-  background: #fafafa;
+  /*background: #fafafa;*/
   cursor: none;
 }
 .fld:hover {
@@ -341,5 +345,6 @@ color: #8a8a8a;
 .pepe {background: #5a8d3e;}
 .brown {background: #a7593a;}
 .yo {background: #ecd349;}
+.nyanspace {background: #003466;}
 .cleaner {background: transparent;}
 .grid {border-top: 1px solid #555555!important; border-right: 1px solid #555555!important;}

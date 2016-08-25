@@ -21,7 +21,7 @@
       PixelHunt Alpha v.0.3.0 by Mironov MIkhail
     </p> -->
     <div class="matrix" ng-controller="matrixcontrol">
-      <span ng-click="fill()" class="fld" ng-repeat="(sym, col) in line track by $index">
+      <span ng-click="fill()" class="fld {{selectBg}}" ng-repeat="(sym, col) in line track by $index">
           <div ng-controller="pix" ng-click="fill()" class="{{line[$index]['col']}} {{grid}} {{brushPoint}}"></div>
       </span>
       <div class="palit">
@@ -141,18 +141,15 @@
           <i class="fa fa-cog" aria-hidden="true"></i> Settings
         </h2>
         <p class="cansize">
-          <span class="setname">Canvas Size : </span><input ng-model="xSize" placeholder="80" type="text"/> x <input ng-model="ySize" placeholder="24" type="text"/>
+          <span class="setname"><i class="fa fa-picture-o" aria-hidden="true"></i> Canvas Size : </span><input ng-model="xSize" placeholder="80" type="text"/> x <input ng-model="ySize" placeholder="24" type="text"/>
         </p>
-        <!-- <p class="cansize">
-          <span class="setname">Canvas color : </span>
-            <select ng-options="canfill as canfill.col for canfill in calfills track by canfill.id" ng-model="cancol">
-              <option type="">
-                nyanspace(default)
-              </option>
-            </select>
-        </p> -->
         <p class="cansize">
-          <span class="setname">Show grid : </span><input type="checkbox" ng-model="gridShow"/>
+          <span class="setname"><i class="fa fa-adjust" aria-hidden="true"></i> Canvas color : </span>
+            <select ng-model="selectBg" ng-options="bgcolor for bgcolor in bgcolors" ng-model="cancol">
+            </select>
+        </p>
+        <p class="cansize">
+          <span class="setname"><i class="fa fa-square-o" aria-hidden="true"></i> Show grid : </span><input type="checkbox" ng-model="gridShow"/>
         </p>
         <button ng-click="setconfirm()">Confirm</button>
         <button ng-click="sethide = true">Close</button>
