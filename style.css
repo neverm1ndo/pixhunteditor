@@ -7,6 +7,14 @@ html, body {
 button {
   outline: none;
 }
+.buttonLock {
+  font-size: 12px;
+  width: 30px!important;
+  margin-bottom: 1px;
+  color: #909090!important;
+  background: #606060;
+  transition: 0.08s linear;
+}
 .logo {
   position: fixed;
   left: 120px;
