@@ -242,6 +242,7 @@ $scope.brush = function(e) {
       // hist = [];
       // lastMove.push($scope.line);
       cansize = $scope.line.length;
+      $scope.ySize = cansize / 80;
       $scope.loading = true;
     }
     else {
